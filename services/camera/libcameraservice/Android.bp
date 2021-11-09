@@ -128,6 +128,8 @@ cc_library {
 
     defaults: [
         "camera_package_name_defaults",
+        "camera_needs_client_info_lib_defaults",
+        "camera_needs_client_info_lib_oplus_defaults",
         "libcameraservice_deps",
         "libcameraservice_ext_lib_defaults",
     ],
