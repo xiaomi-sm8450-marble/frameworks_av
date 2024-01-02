@@ -1325,7 +1325,8 @@ void Track::stop()
             if (!playbackThread->isTrackActive(this)) {
                 reset();
                 mState = STOPPED;
-            } else if (isPatchTrack() || (!isFastTrack() && !isOffloaded() && !isDirect())) {
+            } else if (isPatchTrack() || (!isFastTrack() && !isOffloaded() && !isDirect() &&
+                      playbackThread->type() != IAfThreadBase::DIRECT && playbackThread->type() != IAfThreadBase::OFFLOAD)) {
                 // for a PatchTrack (whatever fast ot not), do not drain but move directly
                 // to STOPPED to avoid closing while active.
                 mState = STOPPED;
