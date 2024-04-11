@@ -6367,9 +6367,9 @@ ssize_t MediaCodec::dequeuePortBuffer(int32_t portIndex) {
     CHECK_EQ(info, &mPortBuffers[portIndex][index]);
     availBuffers->erase(availBuffers->begin());
 
-    CHECK(!info->mOwnedByClient);
     {
         Mutex::Autolock al(mBufferLock);
+        CHECK(!info->mOwnedByClient);
         info->mOwnedByClient = true;
 
         // set image-data
